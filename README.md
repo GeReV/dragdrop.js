@@ -1,4 +1,4 @@
-= dragdrop.js - Native Drag & Drop Polyfill =
+# dragdrop.js - Native Drag & Drop Polyfill #
 
 <code>dragdrop.js</code> is a simple polyfill that emulates the native HTML drag & drop functionality.
 
