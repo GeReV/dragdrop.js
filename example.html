@@ -3,10 +3,52 @@
   <head>
     <title>Drop &amp; Drop Polyfill Example</title>
     <meta charset="utf-8">
+    <style type="text/css">
+      #dragme {
+        background-color: #BBD8E9;
+        border-radius: 3px;
+        cursor: move;
+        padding: 14px;
+        text-align: center;
+        width: 200px;
+      }
+      #status {
+        background-color: #FDF5D9;
+        border: 1px solid #FCEEC1;
+        border-radius: 4px 4px 4px 4px;
+        box-shadow: none;
+        color: #404040;
+        margin-bottom: 18px;
+        padding: 14px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      code {
+        background-color: #FEE9CC;
+        border-radius: 3px 3px 3px 3px;
+        color: rgba(0, 0, 0, 0.75);
+        font-family: Monaco, Andale Mono, Courier New, monospace;
+        padding: 1px 3px;
+      }
+    </style>
   </head>
   <body>
     <h1>Drop &amp; Drop Polyfill Example</h1>
-    <div draggable="true">Test</div>
+    <p><strong>Note</strong>: For this example, <code>forceShim</code> was set to <code>true</code> and therefore drag &amp; drop behavior is emulated.</p>
+    <div id="status">status</div>
+    <div id="dragme" draggable="true">Drag me</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery-1.7.1.min.js">\x3C/script>')</script>
+    <script>
+      window.ddpoly = window.ddpoly || { forceShim: true };
+      
+      $(function () {
+        var status = $('#status');
+        
+        $('#dragme').bind('dragstart dragend', function (e) {
+          status.html(e.type);
+        });
+      });
+    </script>
     <script src="dragdrop.js"></script>
   </body>
 </html>

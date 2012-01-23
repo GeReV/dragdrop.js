@@ -1,5 +1,13 @@
+/*!
+ * dragdrop.js
+ * https://github.com/GeReV/dragdrop.js
+ *
+ * Copyright 2012, Amir Grozki
+ * Licensed under the MIT license.
+ * 
+ */
 (function(window, document) {
-	var ddpoly,
+	var ddpoly = window.ddpoly = (window.ddpoly || {}),
 		div				= document.createElement('div'),
 		initialMouseX	= undefined,
 		initialMouseY	= undefined,
@@ -12,11 +20,9 @@
 		trigger,
 		createEvent;
 	
-	if ( ! (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) ) { // Modernizr's native drag & drop test.
+	if ( ! ddpoly.forceShim || ! (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) ) { // Modernizr's native drag & drop test.
 		return;
 	}
-	
-	ddpoly = window.ddpoly = (window.ddpoly || {});
 		
 	bind = ddpoly.bind = (function () {
 		if ( document.addEventListener ) {
